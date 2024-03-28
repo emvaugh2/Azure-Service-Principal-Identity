@@ -8,9 +8,23 @@
 
 ## Log in to Azure using the Service Principal
 
-So this entire lab is pretty much in in the Azure CLI using PowerShell so lets go ahead and create a storage account so we're able to use PowerShell. Once that's completed, we're asked to list all resource groups in this lab.  
+We first need to be able to log into Azure using the Linux jumpbox provided in the lab. We're going to use a Service Principal to view information in the portal from the jumpbox. So lets launch the Terminal first and then SSH into the Linux VM/jumpbox using
+`ssh cloud_user@13.93.163.152` which is the IP address provided in the lab. And for those of you knew to remotely logging into machines, you have to specify `SSH` as the protocol, give a user (so in our case, `cloud_user`), and then use the @ symbol followed by 
+the IP address of your machine. 
 
-![Image](Add_Remove_Update_Tags1.png)
+![Image](ServicePrincipal1.png)
+
+Notice at the bottom of the image, we're now logged into the lab-VM as the cloud user. So we're officially in the VM. 
+
+Once you're in the Linux VM, we're going to use the `Service Principal` to access resources in Azure. Ironically, we actually need to go to the portal to get the Tenant ID in order to use the Service Principal command. So I did the following:
+
+Azure portal > Microsoft Entra ID > Properties > Tenant ID. I copied the ID because it's a long string of characters. We'll need this for the Linux VM portion. 
+
+![Image](ServicePrincipal2.png)
+
+Now, we'll use the `az login` command with the `--service-principal` argument. In this command, we have to specify a `user`, `password`, and `Tenant ID` (which we already copied from the portal). Put all of this information into the command. 
+
+![Image](ServicePrincipal3.png)
 
 There's only one resource group in this lab. Once that's listed, we're asked to apply the following tags to the entire resource group: `Environment=Production`, `Dept=IT`, and `CreatedBy=YourName` and in this case, I'm using my name, RockstarEV. I've never applied tags
 to a resource in Azure, let alone have done it using PowerShell so I searched the Microsoft website ([link here](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-powershell)) and found the following commands:
