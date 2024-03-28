@@ -1,0 +1,13 @@
+Linux Command Websites:
+
+
+
+- https://learn.microsoft.com/en-US/cli/azure/role/definition?view=azure-cli-latest#az-role-definition-list
+
+- https://www.liquidweb.com/kb/how-to-display-contents-of-a-file-linux/#:~:text=The%20simplest%20way%20to%20view,the%20%2Fproc%2Fversion%20file.
+
+- https://askubuntu.com/questions/582536/how-can-i-input-to-a-file-directly-from-the-terminal
+
+- https://phoenixnap.com/kb/how-to-create-a-file-in-linux
+
+- https://www.warp.dev/terminus/vim-go-to-top-of-file
