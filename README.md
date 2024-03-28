@@ -26,21 +26,8 @@ Now, we'll use the `az login` command with the `--service-principal` argument. I
 
 ![Image](ServicePrincipal3.png)
 
-There's only one resource group in this lab. Once that's listed, we're asked to apply the following tags to the entire resource group: `Environment=Production`, `Dept=IT`, and `CreatedBy=YourName` and in this case, I'm using my name, RockstarEV. I've never applied tags
-to a resource in Azure, let alone have done it using PowerShell so I searched the Microsoft website ([link here](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-powershell)) and found the following commands:
+It should give you output that you're now logged into Azure. That completes the first objective of this lab! On to the next and final objective of this lab. 
 
-![Image](Add_Remove_Update_Tags9.png)
-
-The first command creates a variable named `$tags` that is then given the information for the tags. The second command creates a variable named `$resource` that gets the value of the resource and the resource group its in. The third command passes the tag information
-by using the -ResourceId argument. I used the same tag and resource variables. 
-
-![Image](Add_Remove_Update_Tags2.png)
-
-I then printed the `$resource` variable just to make sure it was given the correct RG. Afterwards, I used the `New-AzTag` command listed on the website to give the resource group the required tags.
-
-![Image](Add_Remove_Update_Tags3.png)
-
-You can see from the above screenshot that the resource group now has the 3 tags required in the lab. 
 
 ## List the Role Definitions and Role Assignments
 
