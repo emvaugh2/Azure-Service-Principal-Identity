@@ -78,4 +78,8 @@ That should suffice. Lab completed!
 
 ## Personal Notes
 
-None for now. This was a pretty straightforward lab. It made me a little more familiar with tags which makes looking at all the information in the portal easier because I can separate different tabs more easily. 
+So this lab was way more jarring than the previous very easy 3 labs. I'm not used to Linux, let alone the terminal so I needed to google what commands to use. Also, I didn't want to do a sloppy job so I was trying to find the cleanest way to get the job done. This is where I'm very appreciative of my Cisco CLI experience because command lines can be scary but I know you'll get used to it very quickly the more you use it. It's actually sometimes the easiest way to get jobs done depending on the scale. 
+
+With that being said, I'm so glad I completed this lab without any help because it made me feel more confident in being able to figure out Linux when I have to take that next step. I do have some basic Linux experience from handling the time clock interface to make sure those devices were able to get on our network. I'm familiar with `vi editor`. I'm familiar with `ls` but that's about it right now. 
+
+This was fun. Definitely going to add it to the mental cookie jar as to why I deserve to get a cloud role. 
