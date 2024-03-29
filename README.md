@@ -31,23 +31,48 @@ It should give you output that you're now logged into Azure. That completes the 
 
 ## List the Role Definitions and Role Assignments
 
-Next, we had to remove the tabs from a virtual machine. First, we had to list out the current tags on the VM.  
+So for the next task, we need to list the Azure role definitions and assignments using the Linux VM command line. Now I don't have much experience with Linux so I had to google a bunch of commands to see how to create a file, append a file, get a  JSON output, and etc.
 
-![Image](Add_Remove_Update_Tags4.png)
+I created a Notepad file with all the links I used but I'm sure I'll also post the links here as well. 
 
-The only tag it had was the `defaultExperience=Yes` tag. We need to remove this tag. I used the same Microsoft webpage to find the remove tag commands. 
+The first part of this tasks requires us to list the role definitions and output to a file named `roleinfo.json`. So we need to first find out the `az` command to list the role definitions so I found an article on the Microsoft Azure website ([link here](https://learn.microsoft.com/en-US/cli/azure/role/definition?view=azure-cli-latest#az-role-definition-list)). This is where I found the `az role definition list`. I received the following output. 
 
-![Image](Add_Remove_Update_Tags10.png)
+![Image](ServicePrincipal5.png)
 
-I created a new tag variable named `$removeTags` and it had the value of the original tag on the VM. Then, I passed the Update-AzTag and the Delete operation just as it was listed on the website. 
+If you use that same Microsoft website, you'll see there are additional commands on the left that relate to the `az role` list. So I found the command `az role assignment list --all` to get the role assignments. I wonder why this command required the `--all` argument
+but that's fine. 
 
-![Image](Add_Remove_Update_Tags5.png)
+![Image](ServicePrincipal6.png)
 
-You can now see that the resource has no tags. Now, we need to add the `MarkForDeletion=Yes` tag to this VM. 
+We need to put all of this information into a JSON file named `roleinfo.json` so I needed to create that file first. I found an article ([link here](https://phoenixnap.com/kb/how-to-create-a-file-in-linux)) that showed an easy way to create files in the Linux terminal. So I used the command `touch` followed by `roleinfo.json` that would create the file. In order to see the file, you use the `ls` command which lists all the files or folders in a directory (s/o CompTIA A+). 
 
-![Image](Add_Remove_Update_Tags6.png)
+![Image](ServicePrincipal4.png)
 
-I used the same commands as the apply tag but I chose a new variable named `$addTag` just to keep things separate. With the `Update-AzTag` command, I used the Merge operation. Now, the VM has the new tag.
+Now that we have the command to list the roles and assignments and we now have the JSON file, lets actually get the output into the file. So I found another article ([link here]((https://askubuntu.com/questions/582536/how-can-i-input-to-a-file-directly-from-the-terminal))) that showed me the `echo` command and how to put that text from that command into a file. To overwrite a file, you use the `>` character. To APPEND a file (add onto the end of a file), you use two of those characters `>>`. I also noticed that you don't need the `echo` command since you're going to get an output from using the two role commands. 
+
+So I used `az role defintition list --output json > roleinfo.json` to take the output from the role command put it into the roleinfo.json file. Then, I used `az role assignment list -all >> roleinfo.json` to append it onto the end of the file. 
+
+![Image](ServicePrincipal7.png)
+
+Afterwards, I had to see if the information was actually put into the file. I had to google which command to list the contents of the file ([link here](https://www.liquidweb.com/kb/how-to-display-contents-of-a-file-linux/#:~:text=The%20simplest%20way%20to%20view,the%20%2Fproc%2Fversion%20file.)) and I found the `cat` command. 
+
+![Image](ServicePrincipal8.png)
+
+I use `cat roleinfo.json` and received the proper output:
+
+![Image](ServicePrincipal9.png)
+
+So this concludes the lab but I found it hard to justify my output. From the above picture, you can see the one of the roles and one of the definitions in the output but you can search through the file. I then rediscovered the `vi` command from the follow article ([link here](https://www.geeksforgeeks.org/vi-editor-unix/)) where I was able to navigate the file much more freely. 
+
+![Image](ServicePrincipal13.png)
+
+Here is me having more concrete evidence of the role definitions and assignments in the `roleinfo.json` file:
+
+![Image](ServicePrincipal10.png)
+![Image](ServicePrincipal11.png)
+![Image](ServicePrincipal12.png)
+
+That should suffice. Lab completed!
 
 
 
